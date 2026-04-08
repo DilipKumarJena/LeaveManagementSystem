@@ -1,0 +1,1048 @@
+using System;
+using System.Collections;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.IO;
+using System.Xml;
+using System.Text;
+using System.Security.Cryptography;
+using System.Data.SqlTypes;
+using System.Globalization;
+using System.Web.Mail;
+
+
+//using CrystalDecisions.CrystalReports.Engine;
+//using CrystalDecisions.ReportSource;
+//using CrystalDecisions.Shared;
+
+
+
+
+/// <summary>
+/// Summary description for Utility
+/// </summary>
+public class Utility
+{
+    public Utility() { }//End of constructor
+
+
+    public static Boolean IsNumeric(Object objValue)
+    {
+        Boolean blnResult = false;
+        try
+        {
+            if (objValue == null)
+            {
+                blnResult = false;
+            }
+            else
+            {
+                int iResult = Int32.Parse(objValue.ToString());
+                blnResult = true;
+            }
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+        return blnResult;
+    }
+
+    // bind the drop down list
+    public static void Bindddl(DropDownList ddl, string query)
+    {
+        DataTable dt = command.ExecuteQuery(query);
+        DataRow dr = dt.NewRow();
+        dr[0] = 0;
+        dr[1] = "<--Select-->";
+        dt.Rows.InsertAt(dr, 0);
+        ddl.DataSource = dt;
+        ddl.DataBind();
+
+    }
+    // bind the list box
+    public static void BindLST(ListBox lsb, string Qry)
+    {
+        DataTable dt = command.ExecuteQuery(Qry);
+        lsb.DataSource = dt;
+        lsb.DataBind();
+    }
+    // bind the drop down list
+
+    public static void BindDDL(DropDownList ddl, ArrayList ar, string FirstIndexText)
+    {
+        ar.Insert(0, FirstIndexText);
+        ddl.DataSource = ar;
+        ddl.DataBind();
+        ddl.Items[0].Value = "0";
+    }
+    // bind the radio  button list
+    public static void BindRDL(RadioButtonList rdl, string Qry)
+    {
+        DataTable dt = command.ExecuteQuery(Qry);
+        rdl.DataSource = dt;
+        rdl.DataBind();
+        rdl.SelectedIndex = 0;
+    }
+
+    //bind check box list 
+    public static void BindCBL(CheckBoxList cbl, string query, string DataValueField, string DataTextField)
+    {
+        DataTable dt = command.ExecuteQuery(query);
+        cbl.DataTextField = DataTextField;
+        cbl.DataValueField = DataValueField;
+        cbl.DataSource = dt;
+        cbl.DataBind();
+    }
+    public static void CreateMessageAlert(System.Web.UI.Page senderpage, string alertMsg)
+    {
+        string alertKey = "alertKey";
+        string strScript;
+        strScript = "<script language=JavaScript>alert('" + alertMsg + "')</script>";
+        if (!senderpage.IsStartupScriptRegistered(alertKey))
+        {
+            senderpage.RegisterStartupScript(alertKey, strScript);
+        }
+    }
+
+    public static void AlertOnAjaxNormalPage(System.Web.UI.Page SenderPageName, string PanelName, string Message)
+    {
+        System.Web.UI.UpdatePanel u = (UpdatePanel)((ContentPlaceHolder)((MasterPage)SenderPageName.Master).FindControl("ContentPlaceHolder1")).FindControl(PanelName);
+        System.Web.UI.ScriptManager.RegisterStartupScript(u, u.GetType(), "Alert", "alert('" + Message + "') ", true);
+    }
+
+
+    public static void AlertOnAjaxPage(System.Web.UI.Page SenderPageName, string PanelName, string Message)
+    {
+        System.Web.UI.UpdatePanel u = (UpdatePanel)((ContentPlaceHolder)((MasterPage)SenderPageName.Master).FindControl("ContentPlaceHolder1")).FindControl(PanelName);
+        System.Web.UI.ScriptManager.RegisterClientScriptBlock(u, u.GetType(), "Alert", "alert('" + Message + "') ", true);
+    }
+
+    public static void AlertOnAjaxNormalPageWithOutMaster(UpdatePanel u, string Message)
+    {
+        System.Web.UI.ScriptManager.RegisterClientScriptBlock(u, u.GetType(), "Alert", "alert('" + Message + "') ", true);
+    }
+
+
+    //public static void ConfirmOnAjaxPage(System.Web.UI.Page SenderPageName, string PanelName, string Message, string HiddenFieldName)
+    //{
+    //    string FinalMessage = "var res = confirm(" + Message + ");";
+    //    FinalMessage += "if (res == true) ";
+    //    FinalMessage += "{ ";
+    //    FinalMessage += "document.getElementById( '<%= " + HiddenFieldName + ".ClientID %>' ).value = 1; ";
+    //    FinalMessage += "} ";
+
+    //    System.Web.UI.UpdatePanel u =
+    //        (UpdatePanel)
+    //            ((ContentPlaceHolder)((MasterPage)SenderPageName.Master).FindControl("ContentPlaceHolder1"))
+    //                .FindControl(PanelName);
+    //    System.Web.UI.ScriptManager.RegisterClientScriptBlock(u, u.GetType(), "confirm",
+    //        FinalMessage, true);
+
+    //}
+
+
+
+
+    public static void BindddlWithSP(DropDownList ddl, string spname)
+    {
+        DataTable dt = command.ExecuteSP(spname);
+        DataRow dr = dt.NewRow();
+        dr[0] = 0;
+        dr[1] = "<--Select-->";
+        dt.Rows.InsertAt(dr, 0);
+        ddl.DataSource = dt;
+        ddl.DataBind();
+
+    }
+
+
+    public static void ClearAllOnAjaxPage(System.Web.UI.Page SenderPageName, string PanelName)
+    {
+        string Script = (@"var i" + Environment.NewLine);
+        Script += (@"for(i = 0; i < document.forms['aspnetForm'].length ; i++)" + Environment.NewLine);
+        Script += (@"{" + Environment.NewLine);
+        Script += (@"var elm = (document.forms['aspnetForm'].elements[i])" + Environment.NewLine);
+        Script += (@"if (elm.type == 'text')" + Environment.NewLine);
+        Script += (@"elm.value = ''" + Environment.NewLine);
+        Script += (@"if (elm.type == 'select-one')" + Environment.NewLine);
+        Script += (@"elm.selectedIndex = 0" + Environment.NewLine);
+        Script += (@"if (elm.type == 'checkbox')" + Environment.NewLine);
+        Script += (@"elm.checked = false" + Environment.NewLine);
+        Script += (@"}" + Environment.NewLine);
+
+        System.Web.UI.UpdatePanel u = (UpdatePanel)((ContentPlaceHolder)((MasterPage)SenderPageName.Master).FindControl("ContentPlaceHolder1")).FindControl(PanelName);
+        System.Web.UI.ScriptManager.RegisterClientScriptBlock(u, u.GetType(), "ClearAll", Script, true);
+    }
+
+
+    public static void BindDDLWithOtherOption(DropDownList ddl, string query, string DataValueField, string DataTextField, bool Other)
+    {
+
+        DataTable dt = command.ExecuteQuery(query);
+        DataRow dr = dt.NewRow();
+        dr[0] = 0;
+        dr[1] = "<--Select-->";
+        dt.Rows.InsertAt(dr, 0);
+        ddl.DataSource = dt;
+        ddl.DataTextField = DataTextField;
+        ddl.DataValueField = DataValueField;
+        if (Other == true)
+        {
+            dr = dt.NewRow();
+            dr[0] = "OTHERS";
+            dr[1] = "OTHERS";
+            dt.Rows.InsertAt(dr, dt.Rows.Count);
+        }
+        ddl.DataBind();
+
+    }
+    //************************************************************
+
+
+    public static void ClearAllMasterPageForm(System.Web.UI.Page senderpage)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(@"<script language=javascript type=text/javascript>");
+        sb.AppendLine(@"for(i = 0; i < document.forms['aspnetForm'].length ; i++)");
+        sb.AppendLine(@"{");
+        sb.AppendLine(@"var elm = (document.forms['aspnetForm'].elements[i]);");
+        sb.AppendLine(@"if (elm.type == 'text')");
+        sb.AppendLine(@"elm.value = '';");
+        sb.AppendLine(@"if (elm.type == 'select-one')");
+        sb.AppendLine(@"elm.selectedIndex = 0;");
+        sb.AppendLine(@"if (elm.type == 'checkbox')");
+        sb.AppendLine(@"elm.checked = false;");
+        sb.AppendLine(@"}");
+        sb.AppendLine(@"</script>");
+
+        string alertKey = "ClearAll";
+
+        if (!senderpage.IsStartupScriptRegistered(alertKey))
+        {
+            senderpage.RegisterStartupScript(alertKey, sb.ToString());
+        }
+    }
+
+
+
+    public static object CheckNullValue(string TextValue)
+    {
+        if (TextValue == "" || TextValue == "0")
+            return ((object)DBNull.Value);
+        else
+            return ((object)TextValue);
+    }
+
+    public static SqlDateTime InsertDate(string Date)
+    {
+        IFormatProvider culture = new CultureInfo("fr-FR", true);
+
+        SqlDateTime ReturnDate;
+        if (Date != "")
+            ReturnDate = Convert.ToDateTime((DateTime.Parse((Date).ToString(), culture, DateTimeStyles.NoCurrentDateDefault)).ToString("yyyy/MM/dd"));
+        else
+            ReturnDate = SqlDateTime.Null;
+
+        return ReturnDate;
+    }
+
+    // image upload old code
+
+    public static byte[] LoadBinary(string filepath)
+    {
+        long m_lImageFileLength = 0;
+        byte[] m_barrImg;
+        if (filepath.Trim() != "")
+        {
+            FileInfo fiImage = new FileInfo(filepath);
+            m_lImageFileLength = fiImage.Length;
+            FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            m_barrImg = new byte[Convert.ToInt32(m_lImageFileLength)];
+            int iBytesRead = fs.Read(m_barrImg, 0, Convert.ToInt32(m_lImageFileLength));
+            fs.Close();
+        }
+        else
+        {
+            m_barrImg = new byte[0];
+        }
+        return m_barrImg;
+    }
+
+
+
+    //Anudeep' Code for File Upload 
+
+    public static object UploadFile(FileUpload FileUpload1)
+    {
+
+
+        if (FileUpload1.HasFile)
+        {
+            string s = FileUpload1.FileName;
+            string sss = HttpContext.Current.Server.MapPath("~/TempFolderForFileUpload");
+            sss = sss + "/" + s;
+            FileUpload1.SaveAs(sss);
+            FileUpload1.PostedFile.InputStream.Flush();
+            FileUpload1.PostedFile.InputStream.Close();
+            return ((object)sss);
+        }
+        else
+        {
+            return ((object)DBNull.Value);
+        }
+    }
+
+
+
+    public static string CreateHTMLTable(DataTable DataTableTemp, string Name)
+    {
+        string Table = "";
+        Table = " <fieldset style='padding :5px'> ";
+        Table += "<table style='border-right: black thin solid; border-top: black thin solid; border-left: black thin solid;border-bottom: black thin solid' id='" + Name + "' width='95%' align='center'>";
+        Table += "<tr style='background-color: #5D7B9D; font-weight: bold; color: Wheat;' >";
+        for (int j = 0; j < DataTableTemp.Columns.Count; j++)
+        {
+            Table += "<td valign='top' align='center'>";
+            Table += "<strong>" + DataTableTemp.Columns[j].ColumnName + "</strong>";
+            Table += "</td>";
+        }
+        Table += "</tr>";
+        int i = 0;
+        Table += "<TBODY>";
+        for (i = 0; i < DataTableTemp.Rows.Count; i++)
+        {
+            Table += "<tr>";
+            for (int j = 0; j < DataTableTemp.Columns.Count; j++)
+            {
+                Table += "<td valign='top' align='center' >";
+                Table += DataTableTemp.Rows[i][j].ToString();
+                Table += "</td>";
+            }
+            Table += "</tr>";
+        }
+        Table += "</TBODY>";
+        Table += "</table>";
+        Table += " </fieldset>";
+        return Table;
+    }
+    // method added by anudeep  as on 10 november 
+    // for load the image and resume from the databas
+    public static object UpLoadImageFile(string obj)
+    {
+        if (obj != "")
+        {
+            FileInfo info = new FileInfo(obj.Trim());
+            if (!info.Exists)
+                return DBNull.Value;
+            else
+            {
+                switch (info.Extension.ToUpper())
+                {
+                    case ".JPG":
+                        return (Utility.ConvertInByteArray(info));
+
+                    case ".GIF":
+                        return (Utility.ConvertInByteArray(info));
+
+                    case ".BMP":
+                        return (Utility.ConvertInByteArray(info));
+
+                    default:
+                        return DBNull.Value;
+                }
+            }
+        }
+        else
+            return DBNull.Value;
+    }
+
+    public static object UpLoadResume(string obj)
+    {
+        if (obj != "")
+        {
+            FileInfo info = new FileInfo(obj.Trim());
+            if (!info.Exists)
+                return DBNull.Value;
+            else
+            {
+                switch (info.Extension.ToUpper())
+                {
+                    case ".DOC":
+                        return (Utility.ConvertInByteArray(info));
+                    case ".DOCX":
+                        return (Utility.ConvertInByteArray(info));
+
+                    default:
+                        return DBNull.Value;
+                }
+            }
+        }
+        else
+            return DBNull.Value;
+    }
+
+    public static object ConvertInByteArray(FileInfo info)
+    {
+        try
+        {
+            byte[] content = new byte[info.Length];
+            FileStream imagestream = info.OpenRead();
+            imagestream.Read(content, 0, content.Length);
+            imagestream.Close();
+            return content;
+        }
+        catch (Exception ee)
+        {
+            HttpContext.Current.Session["Ex"] = ee.Message.ToString();
+            ErrorLogs.logerrors(ee, HttpContext.Current.Request.Url.ToString(), ee.Message);
+            return DBNull.Value;
+        }
+    }
+
+
+    //to bind ddl with years 
+    public static void BindddlYear(DropDownList ddl)
+    {
+
+        ddl.Items.Add(new ListItem("<--Select-->", "0"));
+
+        for (int i = Convert.ToInt32(DateTime.Now.Year); i >= 1960; i--)
+        {
+            ddl.Items.Add(new ListItem(i.ToString()));
+
+        }
+
+        ddl.DataBind();
+    }
+
+    // by manish for the timetable report
+    public static void BindDDLWithOtherOptionWithSP(DropDownList ddl, string spname, string DataValueField, string DataTextField, bool Other)
+    {
+
+        DataTable dt = new DataTable();
+        SqlConnection sqlcon = connection.CreateConneciton();
+        SqlCommand sqlcmd = new SqlCommand();
+        sqlcmd.CommandText = spname;
+        sqlcmd.CommandType = CommandType.StoredProcedure;
+        sqlcmd.Connection = sqlcon;
+        try
+        {
+            SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd);
+            sqlda.Fill(dt);
+
+        }
+        catch (Exception ee)
+        {
+            HttpContext.Current.Session["Ex"] = ee.Message.ToString();
+            ErrorLogs.logerrors(ee, HttpContext.Current.Request.Url.ToString(), "Some Error Occured. Please Contact Administrator.");
+        }
+
+        DataRow dr = dt.NewRow();
+        dr[0] = 0;
+        dr[1] = "<--Select-->";
+        dt.Rows.InsertAt(dr, 0);
+        ddl.DataSource = dt;
+        ddl.DataTextField = DataTextField;
+        ddl.DataValueField = DataValueField;
+        if (Other == true)
+        {
+            dr = dt.NewRow();
+            dr[0] = "OTHERS";
+            dr[1] = "OTHERS";
+            dt.Rows.InsertAt(dr, dt.Rows.Count);
+        }
+        ddl.DataBind();
+    }
+
+
+    public static void BindDDlWithAlloption(DropDownList ddl, string spname, string DataValueField, string DataTextField, bool All)
+    {
+
+        DataTable dt = new DataTable();
+        SqlConnection sqlcon = connection.CreateConneciton();
+        SqlCommand sqlcmd = new SqlCommand();
+        sqlcmd.CommandText = spname;
+        sqlcmd.CommandType = CommandType.StoredProcedure;
+        sqlcmd.Connection = sqlcon;
+        try
+        {
+            SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd);
+            sqlda.Fill(dt);
+
+        }
+        catch (Exception ee)
+        {
+            HttpContext.Current.Session["Ex"] = ee.Message.ToString();
+            ErrorLogs.logerrors(ee, HttpContext.Current.Request.Url.ToString(), "Some Error Occured. Please Contact Administrator.");
+        }
+
+        DataRow dr = dt.NewRow();
+        dr[0] = 0;
+        dr[1] = "<--Select-->";
+        dt.Rows.InsertAt(dr, 0);
+        if (All == true)
+        {
+            dr = dt.NewRow();
+            dr[0] = "All";
+            dr[1] = "All";
+            dt.Rows.InsertAt(dr, 1);
+        }
+        ddl.DataSource = dt;
+        ddl.DataTextField = DataTextField;
+        ddl.DataValueField = DataValueField;
+
+        ddl.DataBind();
+    }
+
+
+
+
+
+
+    // Previous One made was not working with my panel.
+    public static void BindDDLWithAllWithParams(DropDownList ddl, string query, string DataValueField, string DataTextField, bool All)
+    {
+        DataTable dt = command.ExecuteQuery(query);
+        DataRow dr = dt.NewRow();
+        dr[0] = 0;
+        dr[1] = "<--Select-->";
+        dt.Rows.InsertAt(dr, 0);
+
+        if (All == true)
+        {
+            dr = dt.NewRow();
+            dr[0] = "All";
+            dr[1] = "All";
+            dt.Rows.InsertAt(dr, 1);
+        }
+        ddl.DataSource = dt;
+        ddl.DataTextField = DataTextField;
+        ddl.DataValueField = DataValueField;
+        ddl.DataBind();
+    }
+
+    public static void BindAllMonths(DropDownList Drop)
+    {
+        DataTable dt = new DataTable("MonthInYear");
+        DataColumn dc1 = new DataColumn("Text");
+        DataColumn dc2 = new DataColumn("Value");
+        dt.Columns.Add(dc1);
+        dt.Columns.Add(dc2);
+
+        //To get enough data for scroll
+        dt.Rows.Add("<-- Select -->", 0);
+        dt.Rows.Add("January", 1);
+        dt.Rows.Add("February", 2);
+        dt.Rows.Add("March", 3);
+        dt.Rows.Add("April", 4);
+        dt.Rows.Add("May", 5);
+        dt.Rows.Add("June", 6);
+        dt.Rows.Add("July", 7);
+        dt.Rows.Add("August", 8);
+        dt.Rows.Add("September", 9);
+        dt.Rows.Add("October", 10);
+        dt.Rows.Add("November", 11);
+        dt.Rows.Add("December", 12);
+
+        Drop.DataSource = dt;
+        Drop.DataTextField = "Text";
+        Drop.DataValueField = "Value";
+        Drop.DataBind();
+
+    }
+
+
+
+    public static DataTable BindAllMonths()
+    {
+        DataTable dt = new DataTable("MonthInYear");
+        DataColumn dc1 = new DataColumn("Text");
+        DataColumn dc2 = new DataColumn("Value");
+        dt.Columns.Add(dc1);
+        dt.Columns.Add(dc2);
+
+        //To get enough data for scroll
+        dt.Rows.Add("<-- Select -->", 0);
+        dt.Rows.Add("January", 1);
+        dt.Rows.Add("February", 2);
+        dt.Rows.Add("March", 3);
+        dt.Rows.Add("April", 4);
+        dt.Rows.Add("May", 5);
+        dt.Rows.Add("June", 6);
+        dt.Rows.Add("July", 7);
+        dt.Rows.Add("August", 8);
+        dt.Rows.Add("September", 9);
+        dt.Rows.Add("October", 10);
+        dt.Rows.Add("November", 11);
+        dt.Rows.Add("December", 12);
+
+        return dt;
+
+    }
+
+
+
+
+    /// <summary>
+    /// Developed by Anudeep Jaiswal on 24-Dec-2008
+    /// To Create HTMLTable on ajax page using datatable 
+    /// Paste Below Line on .aspx Page
+    /// <script language="javascript" type="text/javascript" src="../Accessories/RollOverEffect.js"></script>
+    /// </summary>
+
+    public static string CreateHTMLTableOnAjaxPage(System.Web.UI.Page SenderPageName, string PanelName, DataTable DataTableTemp, string TableName)
+    {
+        string Table = "";
+        Table = " <fieldset> ";
+        Table += "<table style='border: black thin solid' id='" + TableName + "' width='95%' align='center'>";
+        Table += "<tr style='background-color: #5D7B9D; font-weight: bold; color: Wheat;border: black thin solid ' >";
+        for (int j = 0; j < DataTableTemp.Columns.Count; j++)
+        {
+            Table += "<td valign='top' align='center'  style='border-bottom: black thin solid;vertical-align :middle '>";
+            Table += "<strong>" + DataTableTemp.Columns[j].ColumnName.Replace(" ", "<BR>") + "</strong>";
+            Table += "</td>";
+        }
+        Table += "</tr>";
+        int i = 0;
+        Table += "<TBODY>";
+        for (i = 0; i < DataTableTemp.Rows.Count; i++)
+        {
+            Table += "<tr >";
+            for (int j = 0; j < DataTableTemp.Columns.Count; j++)
+            {
+                Table += "<td valign='top' align='center' style='border-bottom: black thin solid' >";
+                Table += DataTableTemp.Rows[i][j].ToString();
+                Table += "</td>";
+            }
+            Table += "</tr>";
+        }
+        Table += "</TBODY>";
+        Table += "</table>";
+        Table += " </fieldset>";
+
+        string Script = "<script type='text/javascript'>addTableRolloverEffect('" + TableName + "','tableRollOverEffect2','tableRowClickEffect2');</script>";
+        System.Web.UI.UpdatePanel u = (UpdatePanel)((ContentPlaceHolder)((MasterPage)SenderPageName.Master).FindControl("ContentPlaceHolder1")).FindControl(PanelName);
+        ScriptManager.RegisterStartupScript(u, u.GetType(), TableName, Script, false);
+        return Table;
+    }
+
+    public static int CompareDate(string TodayDate, string CompareDate)
+    {
+        string[] x = TodayDate.Split('/');
+        string[] y = CompareDate.Split('/');
+
+        DateTime date1 = new DateTime(Int32.Parse(x[2]), Int32.Parse(x[1]), Int32.Parse(x[0]));
+        DateTime date2 = new DateTime(Int32.Parse(y[2]), Int32.Parse(y[1]), Int32.Parse(y[0]));
+
+        // Calculate difference between the two dates, and convert to hours
+        int _Diff = DateTime.Compare(date2, date1);
+
+        if (_Diff >= 0)
+            return _Diff;
+        else
+            return _Diff;
+    }
+
+
+
+    public static bool CompareTime(string StartTime, string EndTime)
+    {
+        string[] StartTimeSplit = StartTime.Split(':');
+        string[] EndTimeSplit = EndTime.Split(':');
+
+        int StartTimeSecond = Int32.Parse(StartTimeSplit[0]) * 3600 + Int32.Parse(StartTimeSplit[1]) * 60 + Int32.Parse(StartTimeSplit[2]);
+        int EndTimeSecond = Int32.Parse(EndTimeSplit[0]) * 3600 + Int32.Parse(EndTimeSplit[1]) * 60 + Int32.Parse(EndTimeSplit[2]);
+
+        if (EndTimeSecond > StartTimeSecond)
+            return true;
+        else
+            return false;
+
+    }
+
+
+    public static string GetCurrentDate()
+    {
+        string Day = "", Month = "";
+        if (DateTime.Today.Day <= 9)
+            Day = "0" + DateTime.Today.Day.ToString();
+        else
+            Day = DateTime.Today.Day.ToString();
+
+
+        if (DateTime.Today.Month <= 9)
+            Month = "0" + DateTime.Today.Month.ToString();
+        else
+            Month = DateTime.Today.Month.ToString();
+
+        string CurrentDate = Day + "/" + Month + "/" + DateTime.Today.Year;
+        return CurrentDate;
+    }
+    public static string GetCurrentDateMMDDYYYY(string Separator, int LessDay)
+    {
+        string Day = "", Month = "";
+        if (DateTime.Today.Day <= 9)
+            Day = "0" + (DateTime.Today.Day - LessDay).ToString();
+        else
+            Day = (DateTime.Today.Day - LessDay).ToString();
+
+
+        if (DateTime.Today.Month <= 9)
+            Month = "0" + DateTime.Today.Month.ToString();
+        else
+            Month = DateTime.Today.Month.ToString();
+
+        string CurrentDate = Month + Separator + Day + Separator + DateTime.Today.Year;
+        return CurrentDate;
+    }
+
+
+
+
+    public static string TimeDifference(string StartTime, string EndTime)
+    {
+        string[] StartTimeSplit = StartTime.Split(':');
+        string[] EndTimeSplit = EndTime.Split(':');
+
+
+        int StartTimeSecond = Int32.Parse(StartTimeSplit[0]) * 3600 + Int32.Parse(StartTimeSplit[1]) * 60 + Int32.Parse(StartTimeSplit[2]);
+        int EndTimeSecond = Int32.Parse(EndTimeSplit[0]) * 3600 + Int32.Parse(EndTimeSplit[1]) * 60 + Int32.Parse(EndTimeSplit[2]);
+
+        if (EndTimeSecond > StartTimeSecond)
+        {
+            int DiffInSecond = EndTimeSecond - StartTimeSecond;
+            int Hour = DiffInSecond / 3600;
+            int Minute = (DiffInSecond - Hour * 3600) / 60;
+            int Seconds = DiffInSecond - ((Hour * 3600) + (Minute * 60));
+
+            string FinalTimeDifference;
+            if (Hour <= 9)
+                FinalTimeDifference = "0" + Hour.ToString() + ":";
+            else
+                FinalTimeDifference = Hour.ToString() + ":";
+
+            if (Minute <= 9)
+                FinalTimeDifference += "0" + Minute.ToString() + ":";
+            else
+                FinalTimeDifference += Minute.ToString() + ":";
+            if (Seconds <= 9)
+                FinalTimeDifference += "0" + Seconds.ToString();
+            else
+                FinalTimeDifference += Seconds.ToString();
+
+            return FinalTimeDifference;
+        }
+        else
+            return "";
+
+
+
+
+    }
+
+    public static void FillYearsInDropdown(DropDownList ddlYear, int NoOfYear)
+    {
+        int i = DateTime.Today.Year;
+        ddlYear.Items.Add(new ListItem("<-- Select -->", "0"));
+        for (int j = i; j >= i - NoOfYear; j--)
+        {
+            ddlYear.Items.Add(new ListItem(j.ToString(), j.ToString()));
+        }
+    }
+
+
+
+
+    public static void BindRadioButtonListWith_SP(CheckBoxList rdl, string spname)
+    {
+        DataTable dt = command.ExecuteSP(spname);
+        rdl.DataSource = dt;
+        rdl.DataBind();
+        rdl.SelectedIndex = 0;
+
+    }
+
+
+
+    public static void BindCBLWithOtherOptionWithSP(CheckBoxList ddl, string spname, string DataValueField, string DataTextField, bool Other)
+    {
+
+        DataTable dt = new DataTable();
+        SqlConnection sqlcon = connection.CreateConneciton();
+        SqlCommand sqlcmd = new SqlCommand();
+        sqlcmd.CommandText = spname;
+        sqlcmd.CommandType = CommandType.StoredProcedure;
+        sqlcmd.Connection = sqlcon;
+        try
+        {
+            SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd);
+            sqlda.Fill(dt);
+
+        }
+        catch (Exception ee)
+        {
+            HttpContext.Current.Session["Ex"] = ee.Message.ToString();
+            ErrorLogs.logerrors(ee, HttpContext.Current.Request.Url.ToString(), "Some Error Occured. Please Contact Administrator.");
+        }
+
+        //DataRow dr = dt.NewRow();
+        //dr[0] = 0;
+        //dr[1] = "<--Select-->";
+        //dt.Rows.InsertAt(dr, 0);
+        ddl.DataSource = dt;
+        ddl.DataTextField = DataTextField;
+        ddl.DataValueField = DataValueField;
+        if (Other == true)
+        {
+            //dr = dt.NewRow();
+            //dr[0] = "OTHERS";
+            //dr[1] = "OTHERS";
+            //dt.Rows.InsertAt(dr, dt.Rows.Count);
+        }
+        ddl.DataBind();
+    }
+    // By Anudeep
+    public static int DateDifference(string SmallDate, string BigDate)
+    {
+        string[] x = SmallDate.Split('/');
+        string[] y = BigDate.Split('/');
+
+        DateTime date1 = new DateTime(Int32.Parse(x[2]), Int32.Parse(x[0]), Int32.Parse(x[1]));
+        DateTime date2 = new DateTime(Int32.Parse(y[2]), Int32.Parse(y[0]), Int32.Parse(y[1]));
+
+        // Calculate difference between the two dates, and convert to hours
+        TimeSpan t = date2 - date1;
+        int _Diff = t.Days;
+        return _Diff;
+    }
+
+    public static string GetCSSInString()
+    {
+        string Path = HttpContext.Current.Request.PhysicalApplicationPath + "App_Themes/LMS/StyleSheet.css";
+
+
+        string[] AA = File.ReadAllLines(Path);
+        string FinalStringCSS = "<style type='text/css'>" + Environment.NewLine;
+        for (int i = 0; i < AA.Length; i++)
+        {
+            FinalStringCSS += AA[i] + Environment.NewLine;
+        }
+
+        FinalStringCSS += "</style>";
+        return FinalStringCSS;
+    }
+
+
+
+    //public static void CrystalReportLogOn(ReportDocument reportParameters)
+    //{
+
+
+    //    TableLogOnInfo logOnInfo;
+    //    ReportDocument subRd;
+    //    Sections sects;
+    //    ReportObjects ros;
+    //    SubreportObject sro;
+
+
+    //    string str = ConfigurationManager.ConnectionStrings["LMS"].ConnectionString;
+    //    string[] s = str.Split(';');
+    //    string[] s1 = s[0].Split('=');
+    //    string serverName = s1[1];
+    //    string[] s2 = s[1].Split('=');
+    //    string databaseName = s2[1];
+    //    string[] s3 = s[2].Split('=');
+    //    string userName = s3[1];
+    //    string[] s4 = s[3].Split('=');
+    //    string password = s4[1];
+
+    //    if (reportParameters == null)
+    //    {
+    //        throw new ArgumentNullException("reportParameters");
+    //    }
+
+    //    try
+    //    {
+    //        foreach (CrystalDecisions.CrystalReports.Engine.Table t in reportParameters.Database.Tables)
+    //        {
+    //            logOnInfo = t.LogOnInfo;
+    //            logOnInfo.ReportName = reportParameters.Name;
+    //            logOnInfo.ConnectionInfo.ServerName = serverName;
+    //            logOnInfo.ConnectionInfo.DatabaseName = databaseName;
+    //            logOnInfo.ConnectionInfo.UserID = userName;
+    //            logOnInfo.ConnectionInfo.Password = password;
+    //            logOnInfo.TableName = t.Name;
+    //            t.ApplyLogOnInfo(logOnInfo);
+    //            t.Location = t.Name;
+    //        }
+    //    }
+    //    catch (Exception ee)
+    //    {
+    //        ErrorLogs.logerrors(ee, HttpContext.Current.Request.Url.ToString(), ee.Message);
+    //        throw;
+    //    }
+
+    //    sects = reportParameters.ReportDefinition.Sections;
+    //    foreach (Section sect in sects)
+    //    {
+    //        ros = sect.ReportObjects;
+    //        foreach (ReportObject ro in ros)
+    //        {
+    //            if (ro.Kind == ReportObjectKind.SubreportObject)
+    //            {
+    //                sro = (SubreportObject)ro;
+    //                subRd = sro.OpenSubreport(sro.SubreportName);
+    //                try
+    //                {
+    //                    foreach (CrystalDecisions.CrystalReports.Engine.Table t in subRd.Database.Tables)
+    //                    {
+    //                        logOnInfo = t.LogOnInfo;
+    //                        logOnInfo.ReportName = reportParameters.Name;
+    //                        logOnInfo.ConnectionInfo.ServerName = serverName;
+    //                        logOnInfo.ConnectionInfo.DatabaseName = databaseName;
+    //                        logOnInfo.ConnectionInfo.UserID = userName;
+    //                        logOnInfo.ConnectionInfo.Password = password;
+    //                        logOnInfo.TableName = t.Name;
+    //                        t.ApplyLogOnInfo(logOnInfo);
+    //                    }
+    //                }
+    //                catch (Exception ee)
+    //                {
+    //                    ErrorLogs.logerrors(ee, HttpContext.Current.Request.Url.ToString(), ee.Message);
+    //                    throw;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
+    public static void SetGridCss(GridView GV)
+    {
+        GV.CssClass = "GridViewStyle";
+        GV.GridLines = GridLines.None;
+        GV.RowStyle.CssClass = "RowStyle";
+        GV.EmptyDataRowStyle.CssClass = "EmptyRowStyle";
+        GV.PagerStyle.CssClass = "PagerStyle";
+        GV.SelectedRowStyle.CssClass = "SelectedRowStyle";
+        GV.HeaderStyle.CssClass = "HeaderStyle";
+        GV.EditRowStyle.CssClass = "EditRowStyle";
+        GV.AlternatingRowStyle.CssClass = "AltRowStyle";
+    }
+
+    public static void SetGridCssSecond(GridView GV)
+    {
+
+        GV.CssClass = "mGrid";
+        GV.PagerStyle.CssClass = "pgr";
+        GV.AlternatingRowStyle.CssClass = "alt";
+    }
+
+    public static void SetGridCss_ScrollDiv(GridView GV)
+    {
+        GV.CssClass = "GridView";
+        //GV.RowStyle.CssClass = "FrozenCell";
+        GV.HeaderStyle.CssClass = "FrozenCell";
+
+    }
+
+    public static string GetServerDate()
+    {
+        string CurrentDateTime = "";
+        CurrentDateTime = command.ExecuteScalar("Select Convert(Varchar,GetDate(),101)").ToString();
+        return CurrentDateTime;
+    }
+    public static DataTable BindAllMonthsForHR()
+    {
+        DateTime DD = Convert.ToDateTime(GetServerDate());
+        int PYear = DD.Year - 1;
+        int CYear = DD.Year;
+        int NYear = DD.Year + 1;
+
+        DataTable dt = new DataTable("MonthInYear");
+
+        DataColumn dc1 = new DataColumn("Text");
+        DataColumn dc2 = new DataColumn("Value");
+        dt.Columns.Add(dc1);
+        dt.Columns.Add(dc2);
+
+        dt.Rows.Add("<-- Select -->", "|");
+        if (DD >= Convert.ToDateTime("12-25-" + CYear) && DD <= Convert.ToDateTime("12-31-" + CYear))
+            dt.Rows.Add("January", "12-25-" + CYear + "|" + "1-24-" + NYear);
+        else
+            dt.Rows.Add("January", "12-25-" + PYear + "|" + "1-24-" + CYear);
+
+
+
+        dt.Rows.Add("February", "1-25-" + CYear + "|" + "2-24-" + CYear);
+        dt.Rows.Add("March", "2-25-" + CYear + "|" + "3-24-" + CYear);
+        dt.Rows.Add("April", "3-25-" + CYear + "|" + "4-24-" + CYear);
+        dt.Rows.Add("May", "4-25-" + CYear + "|" + "5-24-" + CYear);
+        dt.Rows.Add("June", "5-25-" + CYear + "|" + "6-24-" + CYear);
+        dt.Rows.Add("July", "6-25-" + CYear + "|" + "7-24-" + CYear);
+        dt.Rows.Add("August", "7-25-" + CYear + "|" + "8-24-" + CYear);
+        dt.Rows.Add("September", "8-25-" + CYear + "|" + "9-24-" + CYear);
+        dt.Rows.Add("October", "9-25-" + CYear + "|" + "10-24-" + CYear);
+        dt.Rows.Add("November", "10-25-" + CYear + "|" + "11-24-" + CYear);
+        dt.Rows.Add("December", "11-25-" + CYear + "|" + "12-24-" + NYear);
+
+        return dt;
+    }
+
+
+    public static void InvalidUserRedirectToLoginPage()
+    {
+        if (HttpContext.Current.Session.Count == 0)
+            HttpContext.Current.Response.Redirect("http://192.168.165.22:85");
+    }
+
+    public static string RemoveSpecialCharactersAddress(string str)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.Length; i++)
+        {
+            int ascii = (int)str[i];
+
+            if (ascii >= 32 && ascii <= 126)
+                sb.Append(str[i]);
+        }
+        return sb.ToString();
+    }
+
+
+    public static bool HasSpecialCharacters(string str)
+    {
+        string specialCharacters = @"%!@#$%^&*()?/>.<,:;'\|}]{[_~`+=-" + "\"";
+        char[] specialCharactersArray = specialCharacters.ToCharArray();
+
+        int index = str.IndexOfAny(specialCharactersArray);
+        //index == -1 no special characters
+        if (index == -1)
+            return false;
+        else
+            return true;
+    }
+
+
+
+    public static string ValidatePAN(string PAN)
+    {
+        System.Text.RegularExpressions.Regex rgxPAN = new System.Text.RegularExpressions.Regex(@"[A-Za-z]{5}\d{4}[A-Za-z]{1}");
+        if (!rgxPAN.IsMatch(PAN))
+        {            
+            return "Invalid PAN Number.";
+        }
+        else
+            return "Valid";
+
+    }
+
+
+}//End of Class

@@ -1,0 +1,176 @@
+
+Declare @DepartmentID int
+Set @DepartmentID = 24
+
+Update UserMaster 
+Set DesignationID = (Select ID from Designation where DesignationName=(Select DesignationName from Designation where ID=(Select Top 1 DesignationID from UserMaster where DepartmentID=@DepartmentID
+And DesignationID not In (Select ID from Designation where DepartmentID=@DepartmentID)))
+And DepartmentID=@DepartmentID
+)
+where DepartmentID=@DepartmentID And DesignationID=(Select Top 1 DesignationID from UserMaster where DepartmentID=@DepartmentID
+And DesignationID not In (Select ID from Designation where DepartmentID=@DepartmentID))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------
+
+
+Declare @NewID int
+   
+declare TempCursor cursor for            
+    SELECT  ID FROM UserMaster   
+        
+  OPEN TempCursor         
+        
+  FETCH NEXT FROM TempCursor INTO @NewID
+        
+  WHILE @@FETCH_STATUS = 0         
+    BEGIN 
+
+
+
+
+Begin
+INSERT INTO PageWiseSecurity VALUES (@NewID,'LoginLMS.aspx',1)
+INSERT INTO PageWiseSecurity VALUES (@NewID,'Home.aspx',1)
+INSERT INTO PageWiseSecurity VALUES (@NewID,'Error.aspx',1)
+INSERT INTO PageWiseSecurity VALUES (@NewID,'Employee\LeavePost.aspx',1)
+INSERT INTO PageWiseSecurity VALUES (@NewID,'Employee\ForgetPassword.aspx',1)
+INSERT INTO PageWiseSecurity VALUES (@NewID,'Employee\ResetPassword.aspx',1)
+
+
+End
+  
+  
+    
+FETCH NEXT FROM TempCursor INTO @NewID
+  END            
+        
+  CLOSE TempCursor         
+        
+  DEALLOCATE TempCursor      
+--------------------------------------    
+    
+  DECLARE @NewID INT   
+DECLARE TempCursor CURSOR
+FOR
+SELECT ID
+FROM   UserMaster
+WHERE  IsDel = 0
+       AND ID IN (SELECT DISTINCT ManagerID
+                  FROM   UserMaster
+                  WHERE  IsDel = 0) 
+
+OPEN TempCursor                 
+FETCH NEXT FROM TempCursor INTO @NewID
+DECLARE @Exist INT        
+WHILE @@FETCH_STATUS = 0 
+    BEGIN 
+        BEGIN
+            SELECT  @Exist = COUNT(*)
+            FROM    [GOLD].[PageWiseSecurity] AS PWS
+            WHERE   pws.[Path] = 'TeamLeader\AddedCompOff.aspx'
+                    AND [UserID] = @NewID
+            IF ( @Exist = 0 ) 
+                BEGIN
+                    INSERT  INTO PageWiseSecurity
+                    VALUES  ( @NewID, 'TeamLeader\AddedCompOff.aspx', 1 )
+                END
+        END
+        FETCH NEXT FROM TempCursor INTO @NewID
+    END            
+        
+CLOSE TempCursor                 
+  DEALLOCATE TempCursor  
+
+-----------------------
+
+SELECT * FROM [GOLD].[PageWiseSecurity] S
+LEFT OUTER JOIN [GOLD].[UserMaster] AS UM ON UM.[ID] = S.[UserID]
+WHERE [Path] = 'Employee\OutDutyEmployee.aspx'
+AND [DepartmentID]=10
+
+
+
+
+
+UPDATE S
+SET [Access] = 1
+FROM [GOLD].[PageWiseSecurity] S
+LEFT OUTER JOIN [GOLD].[UserMaster] AS UM ON UM.[ID] = S.[UserID]
+WHERE [Path] = 'Employee\OutDutyEmployee.aspx'
+AND [DepartmentID]=10
+
+
+SELECT * FROM [GOLD].[Department] AS D
+---------------------------------------
+    
+    
+    
+
+
+
+
+
+
+foreach(ConnectionStringSettings css in ConfigurationManager.ConnectionStrings) 
+{ 
+   string name = css.Name; 
+   string connString = css.ConnectionString; 
+   string provider = css.ProviderName; 
+} 
+
+
+
+
+
+
+
+-----------------------------------------------
+
+
+
+
+
+  DECLARE @NewID INT   
+DECLARE TempCursor CURSOR
+FOR
+    SELECT ID
+FROM   UserMaster
+WHERE  IsDel = 0
+       
+OPEN TempCursor                 
+FETCH NEXT FROM TempCursor INTO @NewID
+DECLARE @Exist INT        
+WHILE @@FETCH_STATUS = 0 
+    BEGIN 
+        BEGIN
+            SELECT  @Exist = COUNT(*)
+            FROM    [GOLD].LeaveBalance 
+            WHERE   EmployeeID = @NewID
+                    AND LeaveTypeID = 11
+            IF ( @Exist = 0 ) 
+                BEGIN
+                    INSERT  INTO LeaveBalance (EmployeeID,LeaveTypeID,Balance)
+                    VALUES  ( @NewID,11,0)
+                END
+        END
+        FETCH NEXT FROM TempCursor INTO @NewID
+    END            
+        
+CLOSE TempCursor 
+Deallocate TempCursor                

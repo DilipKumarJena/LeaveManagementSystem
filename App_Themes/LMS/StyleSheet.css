@@ -1,0 +1,843 @@
+﻿body
+{
+	text-align: left;
+	font-family: tahoma;
+	font-size: 11px;
+	margin: 0px 0px 0px 0px;
+	text-transform: capitalize;
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-color: White;
+}
+
+
+
+h1
+{
+	background-image: url(~/Images/MasterPage/ArrowLeft.png);
+	background-position: left center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	font-size: 15pt;
+	font-family: Trebuchet MS;
+	padding-left: 30px;
+	height: 50px;
+	text-align: left;
+	color: #073f88;
+	background-repeat: no-repeat;
+	background-position: left center;
+	vertical-align: middle;
+}
+
+
+
+h2
+{
+	font-family: tahoma;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+P
+{
+	text-align: justify;
+	font-family: tahoma;
+	font-size: 12px;
+	margin: 10px 10px 10px 25px;
+	text-align: justify;
+}
+
+table
+{
+	border: solid 0px black;
+}
+
+
+p:hover
+{
+	color: #000044; /*	font-weight: bold;*/
+}
+
+a:hover
+{
+	color: Silver;
+	text-decoration: none;
+}
+
+.DivBorder
+{
+	border: #000033 thin solid;
+	padding: 5px;
+}
+.text
+{
+	font-family: tahoma;
+	font-size: 11px;
+	color: #292418;
+}
+.button
+{
+	font-family: tahoma;
+	font-size: 11px;
+}
+
+.file
+{
+	font-family: tahoma;
+	font-size: 11px;
+	color: #292418;
+	width: 100px;
+}
+
+.errorYellow
+{
+	font-family: tahoma;
+	font-size: 11px;
+	color: Yellow;
+}
+.errorRed
+{
+	font-family: tahoma;
+	font-size: 11px;
+	color: Red;
+}
+
+.heading
+{
+	font-family: tahoma;
+	font-size: 12px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+	color: #292418;
+}
+.Email
+{
+	text-align: left;
+	font-family: tahoma;
+	font-size: 11px;
+	text-transform: lowercase;
+}
+
+
+
+
+
+/*************Style For Horizontal Menu*********************/
+.jqueryslidemenu
+{
+	font: bold 11px Verdana;
+	background: #ab9c73;
+	width: 100%;
+	text-align: left;
+	border-left: 1px solid #778;
+}
+
+.jqueryslidemenu ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+/*Top level list items*/
+.jqueryslidemenu ul li
+{
+	position: relative;
+	display: inline;
+	float: left;
+}
+
+/*Top level menu link items style*/
+.jqueryslidemenu ul li a
+{
+	display: block;
+	background: #ab9c73; /*background of tabs (default state)*/
+	color: black;
+	padding: 8px 10px;
+	border-right: 1px solid #778;
+	color: #2d2b2b;
+	text-decoration: none;
+}
+
+* html .jqueryslidemenu ul li a
+{
+	/*IE6 hack to get sub menu links to behave correctly*/
+	display: inline-block;
+}
+
+.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited
+{
+	color: black;
+}
+
+.jqueryslidemenu ul li a:hover
+{
+	background: #8f7156; /*tab link background during hover state*/
+	color: black;
+}
+
+/*1st sub level menu*/
+.jqueryslidemenu ul li ul
+{
+	position: absolute;
+	left: 0;
+	display: block;
+	visibility: hidden;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.jqueryslidemenu ul li ul li
+{
+	display: list-item;
+	float: none;
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.jqueryslidemenu ul li ul li ul
+{
+	top: 0;
+}
+
+/* Sub level menu links style */
+.jqueryslidemenu ul li ul li a
+{
+	font: normal 11px Verdana;
+	width: 160px; /*width of sub menus*/
+	padding: 5px;
+	margin: 0;
+	border-top-width: 0;
+	border-bottom: 1px solid gray;
+}
+
+.jqueryslidemenuz ul li ul li a:hover
+{
+	/*sub menus hover style*/
+	background: #eff9ff;
+	color: black;
+}
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass
+{
+	position: absolute;
+	top: 12px;
+	right: 7px;
+}
+
+.rightarrowclass
+{
+	position: absolute;
+	top: 6px;
+	right: 5px;
+}
+
+
+/***********************************************************/
+
+/***************** Roll Over Effect ***********************/
+
+.tableRollOverEffect1
+{
+	background-color: #317082;
+	color: #FFF;
+}
+
+.tableRollOverEffect2
+{
+	background-color: #000;
+	color: #FFF;
+}
+
+.tableRowClickEffect1
+{
+	background-color: #F00;
+	color: #FFF;
+}
+.tableRowClickEffect2
+{
+	background-color: #00F;
+	color: #FFF;
+}
+/***********************************************************************/
+/***********************Style for Rounded Corner************************/
+.container
+{
+	background: #ffffff;
+	color: Black;
+	width: 100%;
+}
+.rtop, .rbottom
+{
+	display: block;
+	background: #ede7d0;
+}
+.rtop *, .rbottom *
+{
+	display: block;
+	height: 1px;
+	overflow: hidden;
+	background: #ffffff;
+}
+.r1
+{
+	margin: 0 5px;
+}
+.r2
+{
+	margin: 0 3px;
+}
+.r3
+{
+	margin: 0 2px;
+}
+.r4
+{
+	margin: 0 1px;
+	height: 2px;
+}
+.td
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 110px;
+	text-align: left;
+}
+/***********************************************************************/
+
+
+/***********************Style for Rounded Corner in DEEP COLOR************************/
+.containerDark
+{
+	background: #ab9c73;
+	color: Black;
+	width: 100%;
+}
+.rtopDark, .rbottomDark
+{
+	display: block;
+	background: #ffffff;
+}
+.rtopDark *, .rbottomDark *
+{
+	display: block;
+	height: 1px;
+	overflow: hidden;
+	background: #ab9c73;
+}
+.r1Dark
+{
+	margin: 0 5px;
+}
+.r2Dark
+{
+	margin: 0 3px;
+}
+.r3Dark
+{
+	margin: 0 2px;
+}
+.r4Dark
+{
+	margin: 0 1px;
+	height: 2px;
+}
+.tdDark
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 110px;
+	text-align: left;
+}
+/********************************************************************
+/*************************Grey Box CSS*******************************/
+/* Last-Modified: 28/06/06 00:08:22 */
+#GB_overlay
+{
+	background-color: #000;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+#GB_window
+{
+	left: 0;
+	top: 0;
+	font-size: 1px;
+	position: absolute;
+	overflow: visible;
+	z-index: 150;
+}
+
+#GB_window .content
+{
+	width: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#GB_frame
+{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+
+.GB_Gallery
+{
+	margin: 0 22px 0 22px;
+}
+
+.GB_Gallery .content
+{
+	background-color: #fff;
+	border: 3px solid #ddd;
+}
+
+.GB_header
+{
+	top: 10px;
+	left: 0;
+	margin: 0;
+	z-index: 500;
+	position: absolute;
+	border-bottom: 2px solid #555;
+	border-top: 2px solid #555;
+}
+
+.GB_header .inner
+{
+	background-color: #333;
+	font-family: Arial, Verdana, sans-serif;
+	padding: 2px 20px 2px 20px;
+}
+
+.GB_header table
+{
+	margin: 0;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.GB_header .caption
+{
+	text-align: left;
+	color: #eee;
+	white-space: nowrap;
+	font-size: 20px;
+}
+
+.GB_header .close
+{
+	text-align: right;
+}
+
+.GB_header .close img
+{
+	z-index: 500;
+	cursor: pointer;
+}
+
+.GB_header .middle
+{
+	white-space: nowrap;
+	text-align: center;
+}
+
+
+#GB_middle
+{
+	color: #eee;
+}
+
+#GB_middle img
+{
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+#GB_middle .disabled
+{
+	cursor: default;
+}
+
+#GB_middle .left
+{
+	padding-right: 10px;
+}
+
+#GB_middle .right
+{
+	padding-left: 10px;
+}
+
+
+.GB_Window .content
+{
+	background-color: #fff;
+	border: 3px solid #ccc;
+	border-top: none;
+}
+
+.GB_Window .header
+{
+	border-bottom: 1px solid #aaa;
+	border-top: 1px solid #999;
+	border-left: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	margin: 0;
+	height: 22px;
+	font-size: 12px;
+	padding: 3px 0;
+	color: #333;
+}
+
+.GB_Window .caption
+{
+	font-size: 12px;
+	text-align: left;
+	font-weight: bold;
+	white-space: nowrap;
+	padding-right: 20px;
+}
+
+.GB_Window .close
+{
+	text-align: right;
+}
+.GB_Window .close span
+{
+	font-size: 12px;
+	cursor: pointer;
+}
+.GB_Window .close img
+{
+	cursor: pointer;
+	padding: 0 3px 0 0;
+}
+
+.GB_Window .on
+{
+	border-bottom: 1px solid #333;
+}
+.GB_Window .click
+{
+	border-bottom: 1px solid red;
+}
+/******************************************************************/
+
+
+
+/*********************MultiSelect DropDown **************************************/
+
+.Default
+{
+	font-size: smaller;
+	font-family: Tahoma;
+}
+
+table
+{
+	padding: 0px;
+	border-collapse: collapse;
+}
+
+.DropDownLook
+{
+	padding: 0px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.DivClose
+{
+	display: none;
+	position: absolute;
+	width: 300px;
+	height: 220px;
+	border-style: solid;
+	border-color: Gray;
+	border-width: 1px;
+	background-color: #99A479;
+}
+
+.LabelClose
+{
+	vertical-align: text-top;
+	position: absolute;
+	bottom: 0px;
+	font-family: Verdana;
+	float: left;
+}
+.LabelAddNew
+{
+	vertical-align: text-top;
+	float: right;
+	position: absolute;
+	bottom: 0px;
+	font-family: Verdana;
+}
+
+
+.DivCheckBoxList
+{
+	display: none;
+	background-color: White;
+	width: 300px;
+	position: absolute;
+	height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-style: solid;
+	border-color: Gray;
+	border-width: 1px;
+}
+
+.CheckBoxList
+{
+	position: relative;
+	width: 250px;
+	height: 10px;
+	overflow: scroll;
+	text-align: left;
+	font-family: tahoma;
+	font-size: 11px;
+}
+
+
+/***********************************************************/
+
+
+
+
+/*GridViewCSS*/
+.GridViewStyle
+{
+	font-family: Arial, Sans-Serif;
+	font-size: small;
+	table-layout: auto;
+	border-collapse: collapse;
+	border: #1d1d1d 5px solid;
+}
+.GridViewStyle tr:hover
+{
+	
+	color: Blue;	
+}
+
+/*Header and Pager styles*/
+.HeaderStyle, .PagerStyle /*Common Styles*/
+{
+	background-image: url(../../Images/HeaderGlassBlack.jpg);
+	background-position: center;
+	background-repeat: repeat-x;
+	background-color: #1d1d1d;
+	text-align: center;
+}
+.HeaderStyle th
+{
+	padding: 5px;
+	color: #ffffff;
+}
+.HeaderStyle a
+{
+	text-decoration: none;
+	color: #ffffff;
+	display: block;
+	text-align: left;
+	font-weight: normal;
+}
+.PagerStyle table
+{
+	text-align: center;
+	margin: auto;
+}
+.PagerStyle table td
+{
+	border: 0px;
+	padding: 5px;
+}
+.PagerStyle td
+{
+	border-top: #1d1d1d 3px solid;
+}
+.PagerStyle a
+{
+	color: #ffffff;
+	text-decoration: none;
+	padding: 2px 10px 2px 10px;
+	border-top: solid 1px #777777;
+	border-right: solid 1px #333333;
+	border-bottom: solid 1px #333333;
+	border-left: solid 1px #777777;
+}
+.PagerStyle span
+{
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding: 2px 10px 2px 10px;
+}
+/*RowStyles*/
+.RowStyle td, .AltRowStyle td, .SelectedRowStyle td, .EditRowStyle td /*Common Styles*/
+{
+	padding: 5px;
+	border-right: solid 1px #1d1d1d;
+}
+/*.RowStyle td:hover, .AltRowStyle td:hover
+{
+	background-color: Fuchsia ;
+	color: #ffffff;
+}*/
+.RowStyle td
+{
+	background-color: #c9c9c9;
+}
+
+.AltRowStyle td
+{
+	background-color: #f0f0f0;
+}
+.SelectedRowStyle td
+{
+	background-color: #ffff66;
+}
+
+/*GridViewCSS*/
+
+
+
+
+
+
+
+/* Second GridViewCSS Start*/
+.mGrid
+{
+	width: 100%;
+	background-color: #fff;
+	margin: 5px 0 10px 0;
+	border: solid 1px #525252;
+	border-collapse: collapse;
+}
+.mGrid td
+{
+	padding: 2px;
+	border: solid 1px #c1c1c1;
+	color: #717171;
+}
+.mGrid th
+{
+	padding: 4px 2px;
+	color: #fff;
+	background: #424242 url(http://192.168.165.101:284/Images/grd_head.png) repeat-x top;
+	border-left: solid 1px #525252;
+	font-size: 0.9em;
+}
+.mGrid .alt
+{
+	background: #fcfcfc url(http://192.168.165.101:284/Images/grd_alt.png) repeat-x top;
+}
+.mGrid .pgr
+{
+	background: #424242 url(http://192.168.165.101:284/Images/grd_pgr.png) repeat-x top;
+}
+.mGrid .pgr table
+{
+	margin: 5px 0;
+}
+.mGrid .pgr td
+{
+	border-width: 0;
+	padding: 0 6px;
+	border-left: solid 1px #666;
+	font-weight: bold;
+	color: #fff;
+	line-height: 12px;
+}
+.mGrid .pgr a
+{
+	color: #666;
+	text-decoration: none;
+}
+.mGrid .pgr a:hover
+{
+	color: #000;
+	text-decoration: none;
+}
+
+/*Second GridViewCSS End*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* A scrolable div */
+    
+    
+
+.GridviewScrollHeader TH, .GridviewScrollHeader TD 
+{ 
+    padding: 5px; 
+    font-weight: bold; 
+    white-space: nowrap; 
+    border-right: 1px solid #AAAAAA; 
+    border-bottom: 1px solid #AAAAAA; 
+    background-color: #EFEFEF; 
+    text-align: left; 
+    vertical-align: bottom; 
+} 
+.GridviewScrollItem TD 
+{ 
+    padding: 5px; 
+    white-space: nowrap; 
+    border-right: 1px solid #AAAAAA; 
+    border-bottom: 1px solid #AAAAAA; 
+    background-color: #FFFFFF; 
+} 
+.GridviewScrollPager  
+{ 
+    border-top: 1px solid #AAAAAA; 
+    background-color: #FFFFFF; 
+} 
+.GridviewScrollPager TD 
+{ 
+    padding-top: 3px; 
+    font-size: 14px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+} 
+.GridviewScrollPager A 
+{ 
+    color: #666666; 
+}
+
+.GridviewScrollPager SPAN
+
+{
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+/* A scrolable div End */
+    
