@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ul id="verticalmenu" class="glossymenu">
+  <li>
+    <a href="javascript:void(0);">HR</a>
+    <ul>
+      <li>
+        <a href="javascript:void(0);">Leave</a>
+        <ul>
+          <li>
+            <a href ="~\HR\Leave\LeaveApprovalByHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Approval</a>
+          </li>
+          <li>
+            <a href ="~\HR\Leave\OutOfTurnLeaveApprovalByHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Of Turn Leave Approval</a>
+          </li>
+          <li>
+            <a href ="~\HR\Leave\CancelPostedLeaveByHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Cancel Posted Leave</a>
+          </li>
+          <li>
+            <a href ="~\HR\Leave\LeaveBalance.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Balance</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0);">Compensatory Leave</a>
+        <ul>
+          <li>
+            <a href ="~\HR\CompensatoryLeave\OutOfTurnCompensatoryLeaveHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Of Turn Comp Off Approval</a>
+          </li>
+          <li>
+            <a href ="~\HR\CompensatoryLeave\MarkCompensatoryLeaveForPaidByHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Mark Comp Off For Paid</a>
+          </li>
+          <li>
+            <a href ="~\HR\CompensatoryLeave\MarkCompensatoryLeaveForLapsedByHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Mark Comp Off For Lapsed</a>
+          </li>
+          <li>
+            <a href ="~\HR\CompensatoryLeave\CompensatoryLeavePostByHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Comp Off Post By HR</a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="javascript:void(0);">Punch Card Detail</a>
+        <ul>
+          <li>
+            <a href ="~\HR\PunchCardDetail\ShowInOutTime.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Show In-Out Time</a>
+          </li>
+          <li>
+            <a href ="~\HR\PunchCardDetail\EmergencySitualtion.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Emergency Situaltion</a>
+          </li>
+          <li>
+
+            <a href ="~\HR\PunchCardDetail\InsertBlankRowsInPunchCardDetail.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Insert Blank Rows In Punch Card</a>
+          </li>
+        </ul>
+      </li>
+
+
+
+
+
+
+
+
+      <li>
+        <a href="javascript:void(0);">Master</a>
+        <ul>
+          <li>
+            <a href ="~\HR\Master\Location.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Location</a>
+          </li>
+          <li>
+            <a href ="~\HR\Master\Department.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Department</a>
+          </li>
+          <li>
+            <a href ="~\HR\Master\Designation.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Designation</a>
+          </li>
+
+          <li>
+            <a href ="~\HR\Master\DefineYearlyLeave.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">OKS Yearly Leave</a>
+          </li>
+          <li>
+            <a href ="~\HR\Master\DefinedLeaveType.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Define Leave Type</a>
+          </li>
+          <li>
+            <a href ="~\HR\Master\QualificationMaster.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Qualification Master</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a href="javascript:void(0);">Employee Registration</a>
+        <ul>
+          <li>
+            <a href ="~\HR\EmployeeRegistration\NewEmployeeRegistration.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">New Employee</a>
+          </li>
+          <li>
+            <a href ="~\HR\EmployeeRegistration\ShowEmployeesForUpdate.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Update Employee</a>
+          </li>
+          <li>
+            <a href ="~\HR\EmployeeRegistration\ShowSpecialEmployees.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Show Employees</a>
+          </li>
+          <li>
+            <a href ="~\HR\EmployeeRegistration\DefineWorkingMinutes.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Working Hour</a>
+          </li>
+
+          <li>
+            <a href ="~\HR\EmployeeRegistration\ShowEmployeesForTL_ManagerListing.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Mark Employee As TL - Manager</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a href="javascript:void(0);">Security</a>
+        <ul>
+          <li>
+            <a href ="~\Security\Filelist.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Page Access</a>
+          </li>
+          <li>
+            <a href ="~\Security\BlockForm.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Block Form</a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="javascript:void(0);">Reports</a>
+
+
+
+        <ul>
+
+
+          <li>
+            <a href="javascript:void(0);">Special Employee</a>
+            <ul>
+              <li>
+                <a href ="~\HR\Reports\SpecialEmployee\SpecialEmployeeWorkingDetail.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Working Detail</a>
+              </li>
+            </ul >
+          </li>
+
+          <li>
+            <a href="javascript:void(0);">Leave Report</a>
+            <ul>
+              <li>
+                <li>
+                  <a href ="~\HR\Reports\MasterRoll.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Muster Roll</a>
+                </li>
+                <li>
+                  <a href ="~\HR\Reports\AvailedLeaveRoaster.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Availed Leave</a>
+                </li>
+              </li>
+            </ul >
+          </li>
+
+
+          <li>
+            <a href ="~\HR\Reports\ShowInOutTimeForHalfDay.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Half Day Report</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\CompOffReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Comp Off Report</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\CompensatoryLeaveAllAdded.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Compensatory Leave All Added Report</a>
+          </li>
+
+
+
+
+
+          <li>
+            <a href ="~\HR\Reports\CompensatoryLeaveYearWiseReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Compensatory Leave Year Wise Report</a>
+          </li>
+
+
+          <li>
+
+            <a href ="~\HR\Reports\HrPersonelInformationReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Personel Information Report</a>
+          </li>
+
+
+          <li>
+            <a href ="~\HR\Reports\PunchCardDetailForHolidayCompOff.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Holiday Comp Off Report</a>
+          </li>
+
+          <li>
+            <a href ="~\HR\Reports\ConfirmationPendingThisMonth.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Confirmation Pending This Month</a>
+          </li>
+
+          <li>
+            <a href ="~\HR\Reports\ShowPendingStatus.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Show Pending Status</a>
+          </li>
+
+
+          <li>
+            <a href ="~\HR\Reports\EmployeeAvailedOKSHolidays.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Employee Availed OKS Holidays</a>
+          </li>
+
+          <li>
+            <a href ="~\HR\Reports\DepartmentWiseAttendanceStatusByDate.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Department Wise Attendance Status</a>
+          </li>
+
+
+
+          <li>
+            <a href ="~\HR\Reports\ReportTimeDuration.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Time Duration</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\AvailedLeaveHR.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Availed Leave</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\ShowNonConfirmedEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Show Non Confirmed Employee</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\CabLateReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Cab Late Report</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\CompensatoryLeavePaymentReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Compensatory Leave Payment Report</a>
+          </li>
+          <li>
+            <a href ="~\HR\Reports\ShowTLManagerMapping.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Team Leader:Manager Mapping</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">Faulty Employee</a>
+            <ul>
+              <li>
+                <a href ="~\HR\Reports\ManualAttendance\ManualAttendanceReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Manual Attendance</a>
+              </li>
+              <li>
+                <a href ="~\HR\Reports\ManualAttendance\BreakReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Break Report</a>
+              </li>
+              <li>
+                <a href ="~\HR\Reports\ManualAttendance\IdleReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Idle Report</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="javascript:void(0);">Admin</a>
+    <ul>
+
+      <li>
+        <a href ="~\AdminCabModule\AddCab.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Add Cab</a>
+      </li>
+      <li>
+        <a href ="~\AdminCabModule\EmployeeCabMapping.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Employee Cab Mapping</a>
+      </li>
+
+
+      <li>
+        <a href ="~\AdminCabModule\CabLateEntry.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Employee Cab Late Entry</a>
+      </li>
+      <li>
+        <a href="javascript:void(0);">Reports</a>
+        <ul>
+          <li>
+            <a href ="~\AdminCabModule\Report\CabReport.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Cab Late Report</a>
+          </li>
+
+        </ul>
+      </li>
+    </ul>
+  </li >
+
+  <li>
+    <a href="javascript:void(0);">Manager</a>
+    <ul>
+      <li>
+        <a href ="~\Manager\CompensatoryLeaveManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Compensatory Leave Approval</a>
+      </li>
+      <li>
+        <a href ="~\Manager\RoasteringOffLeaveManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Roastering Off Leave Approval</a>
+      </li>
+
+
+      <li>
+        <a href ="~\Manager\LeaveApprovalByHOD.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Approval</a>
+      </li>
+      <li>
+        <a href ="~\Manager\OutDutyManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Duty Approval</a>
+      </li>
+      <!--<li>
+        <a href ="~\Manager\CabLateManagerApproval.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Cab Late Approval</a>
+      </li>-->
+      <li>
+        <a href="javascript:void(0);">Reports</a>
+        <ul>
+          <li>
+            <a href ="~\Manager\PunchDetail.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Punch Detail</a>
+          </li>
+          <li>
+            <a href ="~\Manager\AddedCompOffManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Added Comp Off</a>
+          </li>
+          <li>
+            <a href ="~\Manager\MusterRollManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Muster Roll</a>
+          </li>
+          <li>
+            <a href ="~\Manager\AvailedLeaveManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Availed Leave</a>
+          </li>
+          <li>
+            <a href ="~\Manager\ShowTLManagerMappingManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Team Leader:Manager Mapping</a>
+          </li>
+
+
+          <li>
+            <a href ="~\Manager\LeaveBalanceManager.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Team Leave Balance</a>
+          </li>
+
+          <li>
+            <a href ="~\Manager\LeaveCalendar.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Calendar</a>
+          </li>
+
+
+
+          <li>
+            <a href="javascript:void(0);">Faulty Employee</a>
+            <ul>
+              <li>
+                <a href ="~\Manager\IdleTimeTrack\ManualAttendanceM.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Manual Attendance</a>
+              </li>
+              <li>
+                <a href ="~\Manager\IdleTimeTrack\BreakReportM.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Break Report</a>
+              </li>
+              <li>
+                <a href ="~\Manager\IdleTimeTrack\IdleReportM.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Idle Report</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="javascript:void(0);">Team Leader</a>
+    <ul>
+      <li>
+        <a href ="~\TeamLeader\CompensatoryLeaveTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Add Compensatory Leave</a>
+      </li>
+      <li>
+        <a href ="~\TeamLeader\RoasteringOffLeaveTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Add Roastering Off Leave</a>
+      </li>
+      <li>
+        <a href ="~\TeamLeader\LeaveApprovalByTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Approval</a>
+      </li>
+
+      <li>
+        <a href ="~\TeamLeader\OutDutyTeamLeader.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Duty Approval</a>
+      </li>
+
+      <!--<li>
+        <a href ="~\TeamLeader\TeamLeaderCabLateEntry.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Cab Late Entry</a>
+      </li>-->
+      <li>
+        <a href ="~\TeamLeader\LeavePostByTeamLeader.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Post By Team Leader</a>
+      </li>
+      <li>
+        <a href ="~\TeamLeader\ShowInOutTimeTeamLeader.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">In Out Time</a>
+      </li>
+
+      <li>
+        <a href ="~\TeamLeader\ShowSystemInOutTimeForPunchUpdate.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Show System In Out Time For Punch Update</a>
+      </li>
+
+
+      <li>
+        <a href="javascript:void(0);">Roaster Off</a>
+        <ul>
+          <li>
+            <a href ="~\TeamLeader\RoasterOff\RoasterOffEmployeeGroup.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Roaster Off Employee Group</a>
+          </li>
+          <li>
+            <a href ="~\TeamLeader\RoasterOff\SetRoasterOffEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Set Roaster Off Employee</a>
+          </li>
+          <li>
+            <a href ="~\TeamLeader\RoasterOff\SetRoasterOffEmployee_NewFormat.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Set Roaster Off Employee - New Format</a>
+          </li>
+        </ul>
+      </li >
+      <li>
+        <a href="javascript:void(0);">Reports</a>
+        <ul>
+          <li>
+            <a href ="~\TeamLeader\AddedCompOff.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Added Comp Off</a>
+          </li>
+
+          <li>
+            <a href ="~\TeamLeader\MusterRollTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Muster Roll</a>
+          </li>
+          <li>
+            <a href ="~\TeamLeader\AvailedLeaveTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Availed Leave</a>
+          </li>
+
+          <li>
+            <a href ="~\TeamLeader\LeaveBalanceTeamLeader.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Team Leave Balance</a>
+          </li>
+
+          <li>
+            <a href ="~\TeamLeader\PendingCompOffToBeAdd.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Pending CompOff To Be Add</a>
+          </li>
+
+
+          <li>
+            <a href="javascript:void(0);">Faulty Employee</a>
+            <ul>
+              <li>
+                <a href ="~\TeamLeader\IdleTimeTrack\ManualAttendanceTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Manual Attendance</a>
+              </li>
+              <li>
+                <a href ="~\TeamLeader\IdleTimeTrack\BreakReportTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Break Report</a>
+              </li>
+              <li>
+                <a href ="~\TeamLeader\IdleTimeTrack\IdleReportTL.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Idle Report</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="javascript:void(0);">Employees</a>
+    <ul>
+      <li>
+        <a href ="~\Employee\LeavePost.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Leave Post</a>
+      </li>
+      <li>
+        <a href ="~\Employee\MusterRollEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Muster Roll</a>
+      </li>
+      <li>
+        <a href ="~\Employee\OutDutyEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Duty</a>
+      </li>
+      <li>
+        <a href ="~\Employee\ResetPassword.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Reset Password</a>
+      </li>
+      <li>
+        <a href ="~\Employee\TaxDeclaration.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Tax Declaration</a>
+      </li>
+
+
+    </ul>
+  </li>
+
+
+  <li>
+    <a href="javascript:void(0);">Accounts</a>
+    <ul>
+      <li>
+        <a href ="~\Accounts\MasterPanel\AccountsHome.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Accounts Home Page</a>
+      </li>
+      <li>
+        <a href ="~\Accounts\ShowTaxDeclaration.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Show Tax Declaration</a>
+      </li>
+      <!-- <li>
+        <a href ="~\Employee\OutDutyEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Duty</a>
+      </li>
+      <li>
+        <a href ="~\Employee\ResetPassword.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Reset Password</a>
+      </li>-->
+      <!--<li>
+        <a href ="~\Employee\CompensatoryLeaveAdjustmentDetail.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Compensatory Leave Adjustment Detail</a>
+      </li>-->
+
+
+    </ul>
+  </li>
+
+
+  <li>
+    <a href="javascript:void(0);">OKS Education Employees</a>
+    <ul>
+      <li>
+        <a href ="~\OKS_Education\Employee\OKS_Education_MusterRollEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Muster Roll</a>
+      </li>
+      <!--<li>
+        <a href ="~\Employee\MusterRollEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Muster Roll</a>
+      </li>
+      <li>
+        <a href ="~\Employee\OutDutyEmployee.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Out Duty</a>
+      </li>
+      <li>
+        <a href ="~\Employee\ResetPassword.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Reset Password</a>
+      </li>-->
+      <!--<li>
+        <a href ="~\Employee\CompensatoryLeaveAdjustmentDetail.aspx" onMouseOver="window.status='http://www.oksgroup.com';return true" onMouseOut="window.status=''">Compensatory Leave Adjustment Detail</a>
+      </li>-->
+
+
+    </ul>
+  </li>
+
+</ul>
