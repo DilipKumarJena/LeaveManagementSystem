@@ -1,0 +1,423 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageNew.master.cs"
+    Inherits="MasterPageNew" %>
+<%@ Register Src="../UserControl/LeaveCalendar.ascx" TagName="LeaveCalendar" TagPrefix="uc4" %>
+<%@ Register Src="../Navigation/Vertical/VerticalMenu.ascx" TagName="VerticalMenu"
+    TagPrefix="uc3" %>
+<%@ Register Src="../Navigation/UpperMenu.ascx" TagName="UpperMenu" TagPrefix="uc2" %>
+<%@ Register Src="../UserControl/UserDetails.ascx" TagName="UserDetails" TagPrefix="uc1" %>
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">   Old Setting --%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1- strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)" />
+    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)" />
+    <%-- Old setting--%>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="robots" content="noodp,noydir" />
+    <%-- Old setting End --%>
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link rel="icon" href="~/animated_favicon1.gif" type="image/gif" />
+
+    <script type="text/javascript" language="javascript" src="http://192.168.165.22:100/JavaScript/scrolltopcontrol.js"></script>
+
+    <script type="text/javascript" language="javascript" src="http://192.168.165.22:100/JavaScript/Reflection.js"></script>
+
+    <script type="text/javascript" language="javascript" src="http://192.168.165.22:100/JavaScript/Shadow.js"></script>
+
+    <script type="text/javascript" language="javascript" src="http://192.168.165.22:100/JavaScript/TextValidations.js"></script>
+
+    <script type="text/javascript" language="javascript" src="http://192.168.165.22:100/JavaScript/UpdateProgress.js"></script>
+
+    <script type="text/javascript" language="javascript" src="http://192.168.165.22:100/JavaScript/BrowserWidth.js"></script>
+
+    <script type="text/javascript" src='http://192.168.165.22:100/JavaScript/animatedcollapse.js'></script>
+
+    <script type="text/javascript" src='http://192.168.165.22:100/JavaScript/RollOverEffect.js'></script>
+
+    <script type="text/javascript" src="http://192.168.165.22:100/JavaScript/jquery.min.js"></script>
+
+ <script type="text/javascript">
+    var GB_ROOT_DIR = "http://192.168.165.22:100/greybox/";
+    </script>
+
+    <script type="text/javascript" src="http://192.168.165.22:100/greybox/AJS.js"></script>
+
+    <script type="text/javascript" src="http://192.168.165.22:100/greybox/AJS_fx.js"></script>
+
+    <script type="text/javascript" src="http://192.168.165.22:100/greybox/gb_scripts.js"></script>
+
+    <script type="text/javascript">
+
+animatedcollapse.addDiv('LeaveCal', 'fade=1,height=200px')
+
+animatedcollapse.ontoggle=function($, divobj, state){ }
+
+animatedcollapse.init()
+
+    </script>
+
+    <title>OKS - Leave Management System</title>
+    <style type="text/css">
+#SpanClock { font-family: Tahoma, Helvetica, sans-serif; 
+font-size: 13Px; 
+color: Black;
+ 
+
+ padding: 4px; }
+
+#countDown { font-family: Tahoma; 
+font-size: 13Px; 
+color: Black;
+ 
+  }
+ 
+ #fixed1 { position: fixed; top: 5px; right : 5px;  } 
+</style>
+
+    <script type="text/javascript" language="javascript">
+       
+var min = 12;
+var max = 25;
+var s = 0;
+
+
+function increaseFontSize()
+{
+   var p = document.getElementsByTagName('body');
+   for(i = 0; i < p.length; i ++ )
+   {
+      if(p[i].style.fontSize)
+      {
+         s = parseInt(p[i].style.fontSize.replace("px", ""));
+      }
+      else
+      {
+         s = 12;
+      }
+      if(s != max)
+      {
+         s += 1;
+      }
+      p[i].style.fontSize = s + "px"      
+   }
+}
+function decreaseFontSize()
+{
+   var p = document.getElementsByTagName('body');
+   for(i = 0; i < p.length; i ++ )
+   {
+      if(p[i].style.fontSize)
+      {
+         s = parseInt(p[i].style.fontSize.replace("px", ""));
+      }
+      else
+      {
+         s = 12;
+      }
+      if(s != min)
+      {
+         s -= 1;
+      }
+      p[i].style.fontSize = s + "px"
+   }
+}
+
+
+
+
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function changeInputs()      
+       {
+        if (document.all) 
+            {
+                for (formIdx=0; formIdx<document.forms.length; formIdx++) 
+                    {
+                        var theForm = document.forms[formIdx];
+                        for (elementIdx=0; elementIdx<theForm.elements.length; elementIdx++) 
+                            {
+                                   window.status += theForm[elementIdx].type;
+                                    if(theForm[elementIdx].type == "select-one") 
+                                     theForm[elementIdx].className = 'text';
+                                    if(theForm[elementIdx].type == "text") 
+                                     theForm[elementIdx].className = 'text';
+                                    if(theForm[elementIdx].type == "file") 
+                                     theForm[elementIdx].className = 'file';
+                                    else
+                                     theForm[elementIdx].className = 'button';
+                            }
+                    }
+            }
+       }
+       
+       
+       
+       
+function init ( )
+{
+  timeDisplay = document.createTextNode ( "" );
+  document.getElementById("clock").appendChild ( timeDisplay );
+}
+
+function updateClock ( )
+{
+  var currentTime = new Date ( );
+
+  var currentHours = currentTime.getHours ( );
+  var currentMinutes = currentTime.getMinutes ( );
+  var currentSeconds = currentTime.getSeconds ( );
+
+  // Pad the minutes and seconds with leading zeros, if required
+  currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+  currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+  // Choose either "AM" or "PM" as appropriate
+  var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+  // Convert the hours component to 12-hour format if needed
+  currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+  // Convert an hours component of "0" to "12"
+  currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+  // Compose the string for display
+  var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+  // Update the time display
+  
+  document.getElementById('SpanClock').firstChild.nodeValue = currentTimeString;
+}
+
+
+
+
+
+       
+    </script>
+
+    <script language="javascript" type="text/javascript">
+    var timeout = 900000;
+var timer = setInterval(function()
+{
+   timeout -= 1000;
+   document.getElementById('countDown').innerHTML = time(timeout);  
+   if (timeout == 0)
+   {
+      clearInterval(timer);
+      alert('Your Session Has Expired!')
+      var LoginPage ="http://192.168.165.22:85"      // Publish
+      //var LoginPage ="http://"+ document.location.host + "/LeaveManagementSystem/LoginLMS.aspx"      // Local
+      
+
+      
+      document.getElementById('countDown').innerHTML = 'Your Session Has Expired!'
+      javascript:window.location.href =LoginPage ;
+     
+   }
+}
+, 1000);
+
+function two(x)
+{
+
+   return ((x > 9) ? "" : "0") + x
+}
+
+function time(ms)
+{
+   var t = '';
+   var sec = Math.floor(ms / 1000);
+   ms = ms % 1000
+
+   var min = Math.floor(sec / 60);
+   sec = sec % 60;
+  
+
+   var hr = Math.floor(min / 60);
+   min = min % 60;
+   t = hr + ":" + two(min) + ":" + two(sec);
+
+
+   return "Your Session Will TimeOut In " + t ;
+}
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="aaaaa" style="border-right: #009900 3px groove; padding-right: 3px; border-top: #009900 3px groove;
+            padding-left: 3px; padding-bottom: 3px; border-left: #009900 3px groove; padding-top: 3px;
+            border-bottom: #009900 3px groove">
+            <div style="padding: 5px">
+                <table cellpadding="0" cellspacing="5" style="width: 100%">
+                    <tr>
+                        <td style="width: 100%; border: #000099 3px solid; padding: 5px; height: 80px">
+                            <table width="100%" style="background-color: White">
+                                <tr>
+                                    <td style="width: 40%">
+                                        <div id="OksLogo" style="width: 100%; height: 80px;" z-index="-1">
+                                            <object style="width: 100%; height: 100%;" z-index="-1">
+                                                <param name="movie" value="http://192.168.165.22:100/Images/MasterPage/LMS_SWF/OksLogo.swf" />
+                                                <embed src="http://192.168.165.22:100/Images/MasterPage/LMS_SWF/OksLogo.swf" width="100%"
+                                                    height="100%"></embed>
+                                            </object>
+                                        </div>
+                                    </td>
+                                    <td style="width: 60%">
+                                        <div id="Banner" style="width: 100%; height: 80px;" z-index="-1">
+                                            <object style="width: 100%; height: 100%;" z-index="-1">
+                                                <param name="movie" value="<%= MyFunction() %>" />
+                                                <embed src="<%= MyFunction() %>" width="100%" height="100%"></embed>
+                                            </object>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; border: #000099 3px solid;">
+                            <marquee behavior="alternate" scrollamount="1" style="font-size: small; font-weight: bolder;
+                                color: Blue" onmouseover="this.stop()" onmouseout="this.start()">
+                                Please Check Out Your Attendance Status Regularly. After 25<sup>th</sup> HR Will
+                                Not Be Responsible For Any Changes...</marquee>
+                           <hr style="padding: 0px" />
+                            <marquee behavior="alternate" scrollamount="1" style="font-size: small; font-weight: bolder;
+                                color: Blue" onmouseover="this.stop()" onmouseout="this.start()">
+                                <img src="http://192.168.165.22:100/Images/New.jpg" />
+                                Feature : Now Employee Can Change Their Photo. Just Click On Your Photo & Follow Instruction.</marquee>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; border: #000099 3px solid; padding: 5px;">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td colspan="5">
+                                        <uc1:UserDetails ID="UserDetails1" runat="server" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2">
+                                        <a href="javascript:animatedcollapse.toggle('LeaveCal')" class="text">Show Current Month
+                                            Holiday</a>
+                                        <div id="LeaveCal" style="width: 350px; background: #FFFFCC; display: none">
+                                            <uc4:LeaveCalendar ID="LeaveCalendar1" runat="server" />
+                                        </div>
+                                    </td>
+                                    <td style="width: 20%" align="center">
+                                        <span id="countDown"></span>
+                                    </td>
+                                    <td style="width: 20%" align="center">
+                                        <div style="position: relative; top: 0%; margin: 0 auto; padding-right: 0px;">
+                                            <span id="SpanClock">Clock</span>
+                                        </div>
+                                    </td>
+                                    <td style="width: 20%" align="center">
+                                        <div style="position: relative; top: 0%; margin: 0 auto; padding-right: 0px;">
+                                            <a href="javascript:decreaseFontSize();" style="text-decoration: none">
+                                                <img id="Dec" runat="server" src="../Images/MasterPage/font-dec.gif" alt="Decrerase" /></a>
+                                            <a href="javascript:increaseFontSize(); " style="text-decoration: none">
+                                                <img id="Inc" runat="server" src="../Images/MasterPage/font-inc.gif" alt="Increase" /></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="5">
+                                        <uc2:UpperMenu ID="UpperMenu1" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%;">
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 77%; border: #000099 3px solid; background-color: white; height: auto;"
+                                        valign="top">
+                                        <div id='ContentPage' style="padding: 0; width: 100%; height: 100%; background: url(http://192.168.165.22:100/Images/MasterPage/NewBack.jpg) #F0F0F0 no-repeat right top;">
+                                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                            </asp:ContentPlaceHolder>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; border: #000099 3px solid; padding: 5px;">
+                            <table width="100%">
+                                <tr style="background-color: #ab9c73">
+                                    <td valign="top">
+                                        <div id="Div1" style="text-align: center; border-bottom: 1px solid black">
+                                            <span>Best Viewed With <a href="http://windows.microsoft.com/en-US/windows/downloads/internet-explorer"
+                                                target="_blank" style="text-decoration: none; font-style: normal; font-weight: normal;
+                                                color: Black" id='A1' onmouseover='second2(this.id)' onmouseout='fifth2()'>Internet
+                                                Explorer 7</a> And Above</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #ab9c73">
+                                    <td valign="top">
+                                        <div id="footer" style="text-align: center">
+                                            Copyright <span style="font-size: small;">
+
+                                                <script type="text/javascript" language="Javascript">
+                                        var now = new Date();
+                                        document.write(getFullYear(now));
+                                        function getFullYear(d){ 
+                                        var y = d.getYear();
+                                        if (y < 1000) y += 1900;
+                                        return y;
+                                        }
+                                                </script>
+
+                                            </span><a href="http://www.oksgroup.com" target="_blank" style="text-decoration: none;
+                                                font-style: normal; font-weight: normal; color: Black" id='sixth2' onmouseover='second2(this.id)'
+                                                onmouseout='fifth2()'>OKS Group.</a> All Rights Reserved</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <asp:HiddenField ID="hfBrowserWidth" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script language="javascript" type="text/javascript">
+        window.moveTo(0,0);
+        if (document.all) {top.window.resizeTo(screen.availWidth,screen.availHeight);}
+        else if (document.layers||document.getElementById) {
+        if (top.window.outerHeight<screen.availHeight||top.window.outerWidth<screen.availWidth){top.window.outerHeight = screen.availHeight;top.window.outerWidth = screen.availWidth;}}
+        window.onload = function() { changeInputs();updateClock(); setInterval('updateClock()', 1000 ) }
+       
+        </script>
+
+        <script language="JavaScript" type="Text/JavaScript">
+//Made by 1st JavaScript Editor
+//http://www.yaldex.com
+//Come and get more (free) products
+
+var fifteenth;var sixteenth;var seventeenth;var eighteenth=17;var nineteenth=1.2;var twentieth=3;var first2;
+function second2(third2) { 
+seventeenth=eval("document.getElementById('"+third2+"')");fifteenth=seventeenth.childNodes[0].nodeValue;fourth2();}
+function fourth2() {
+if (eighteenth<=180) {
+if (twentieth<0) {sixteenth=fifteenth+'\xa0';}
+else if (twentieth>0) {sixteenth='\xa0'+fifteenth};seventeenth.childNodes[0].nodeValue=sixteenth; twentieth=twentieth*-1;eighteenth=eighteenth*nineteenth;first2=setTimeout('fourth2()',eighteenth)	;}else {clearTimeout(first2);eighteenth=18;seventeenth.childNodes[0].nodeValue=fifteenth; }}
+function fifth2() { 
+clearTimeout(first2);eighteenth=22;seventeenth.childNodes[0].nodeValue=fifteenth; }  
+
+        </script>
+
+        <script language="javascript" type="text/javascript">
+               document.getElementById('<%= hfBrowserWidth.ClientID %>').value = GetBrowserWidth() 
+        </script>
+
+    </form>
+</body>
+</html>
